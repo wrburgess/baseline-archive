@@ -1,0 +1,66 @@
+// Baseline design tokens — source of truth in docs/designs/*.html :root vars.
+//
+// This partial has two jobs:
+//   1. Expose the tokens as CSS custom properties at runtime so ViewComponents
+//      and inline styles can reference them directly (--rust, --ink, etc.).
+//   2. Map the tokens to Bootstrap Sass variables so every Bootstrap primitive
+//      (buttons, cards, forms, navbar, tables…) inherits the Baseline palette
+//      at build time.
+
+// ----- Raw tokens (kept in Sass so Bootstrap vars can reference them) -----
+
+$baseline-bg:        #eef1f4;
+$baseline-bg-2:      #e6eaef;
+$baseline-surface:   #ffffff;
+$baseline-surface-2: #f7f9fb;
+$baseline-surface-3: #eef2f6;
+
+$baseline-ink:   #0f1419;
+$baseline-ink-2: #3b4350;
+$baseline-ink-3: #626b77;
+$baseline-ink-4: #94a0ae;
+
+$baseline-line:   #d9dde3;
+$baseline-line-2: #e7eaef;
+
+$baseline-rust:      #a84c2a;
+$baseline-rust-2:    #85391e;
+$baseline-rust-wash: #f4e0d4;
+
+$baseline-win:   $baseline-rust;
+$baseline-loss:  $baseline-ink-4;
+$baseline-focus: #1e3a8a;
+
+$baseline-font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+$baseline-font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+$baseline-radius: 0.1875rem; // 3px
+
+// ----- CSS custom properties (runtime) -----
+
+:root {
+  --bg:        #{$baseline-bg};
+  --bg-2:      #{$baseline-bg-2};
+  --surface:   #{$baseline-surface};
+  --surface-2: #{$baseline-surface-2};
+  --surface-3: #{$baseline-surface-3};
+
+  --ink:   #{$baseline-ink};
+  --ink-2: #{$baseline-ink-2};
+  --ink-3: #{$baseline-ink-3};
+  --ink-4: #{$baseline-ink-4};
+
+  --line:   #{$baseline-line};
+  --line-2: #{$baseline-line-2};
+
+  --rust:      #{$baseline-rust};
+  --rust-2:    #{$baseline-rust-2};
+  --rust-wash: #{$baseline-rust-wash};
+
+  --win:   #{$baseline-win};
+  --loss:  #{$baseline-loss};
+  --focus: #{$baseline-focus};
+
+  --font-sans: #{$baseline-font-sans};
+  --font-mono: #{$baseline-font-mono};
+}

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "//": "Copy this file to .mcp.json and fill in your credentials. .mcp.json is gitignored.",
+    "//example": "Add MCP servers as needed. Examples: context7, github, honeybadger. Keep secrets in env vars.",
+    "example": {
+      "type": "http",
+      "url": "https://example.mcp.server/mcp",
+      "headers": {
+        "Authorization": "Bearer ${EXAMPLE_API_TOKEN}"
+      }
+    }
+  }
+}

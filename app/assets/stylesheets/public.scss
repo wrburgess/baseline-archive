@@ -1,0 +1,32 @@
+@use "baseline_bootstrap";
+@use "baseline_tokens";
+@use "bootstrap-icons/font/bootstrap-icons";
+
+$bootstrap-icons-font-src: url("bootstrap-icons.woff2") format("woff2"), url("fonts/bootstrap-icons.woff") format("woff") !default;
+
+// Public-facing (including Devise sign-in) styles
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-feature-settings: "ss01", "cv11";
+}
+
+body.devise {
+  background-color: var(--bg);
+
+  .navbar {
+    background-color: var(--ink) !important;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .navbar-brand {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}
+
+// Tabular numerals for anything rating/score-ish
+.tabular,
+.font-mono {
+  font-variant-numeric: tabular-nums;
+}

@@ -28,7 +28,7 @@ It is **not** a lineup optimizer, a prediction model, or a public tennis referen
 | Competitions | `Competition` (container) + `Stage` (phase within it) + persistent `Team` + `TeamStageEntry`. Sectionals/Nationals are stages, not separate competitions. **Entire competition/stage/team layer deferred to v2.** |
 | Doubles modeling | `match_participants` join table (one row per player per match). H2H cache denormalized for scouting speed |
 | Per-match ratings | Snapshotted onto `match_participants` at commit time; never back-derived |
-| Auth | Private captain tool. Devise + Pundit + Optimus `system_permissions`. Everything role-gated, no unauthenticated surfaces |
+| Auth | Private captain tool. Devise + Pundit + built-in `system_permissions`. Everything role-gated, no unauthenticated surfaces |
 | Match entry (MVP) | Admin CRUD only. No dedicated court-card form, no screenshot parser in v0 |
 | Spreadsheet import | v1 — Roo-based template import, preview, commit |
 | Screenshot OCR pipeline | v2 — deterministic TennisLink parsers with Tesseract OCR |
@@ -40,8 +40,8 @@ It is **not** a lineup optimizer, a prediction model, or a public tennis referen
 | External IDs | `players.ustaid`, `trid`, `utrid`, `wtnid` — all nullable, populated opportunistically |
 | Gender | Required at player create |
 | Birth year | Optional |
-| UI stack | **Bootstrap** (already in Optimus). Themed via Sass `_variables.scss` to the Baseline design tokens (cool neutral palette, IBM Plex Sans + Mono, 3px radius, rust accent). Custom ViewComponents built on top of Bootstrap primitives. No Tailwind, no Rails Designer purchase. |
-| Starting point | Fresh Optimus template; port data from CourtView via one-time Maintenance Task |
+| UI stack | **Bootstrap**, themed via Sass `_variables.scss` to the Baseline design tokens (cool neutral palette, IBM Plex Sans + Mono, 3px radius, rust accent). Custom ViewComponents built on top of Bootstrap primitives. No Tailwind, no Rails Designer purchase. |
+| Starting point | Fresh Rails 8.1 template (imported + scrubbed in Week 1); port data from CourtView via one-time Maintenance Task |
 | Hosting | Local only. Postgres on the MacBook |
 
 ## 3. Schema
@@ -199,7 +199,7 @@ Global search in top nav. Indexes on `players.first_name`, `players.last_name`, 
 
 - Devise for authentication
 - Pundit for authorization
-- Optimus's `system_permissions` + `system_roles` for role definitions (`admin`, `captain`)
+- Built-in `system_permissions` + `system_roles` for role definitions (`admin`, `captain`)
 - **No unauthenticated surfaces in v0.** Every route requires login; Pundit enforces role checks.
 - `Player.user_id` nullable FK so player-accounts can be introduced in a future release without migration pain. Not used in v0.
 
@@ -244,7 +244,7 @@ One-time `Maintenance Task` — `MaintenanceTasks::MigrateFromCourtview` — rea
 - Admin CRUD: Players, Matches, Grades, PlayerAliases, HeadToHeadNotes, merge flow, needs-disambiguation queue.
 - Public: global search, `/players/:id`, `/head_to_heads/:a_id/:b_id`.
 - H2H cache refresh on Match commit.
-- Bootstrap (already wired in Optimus) themed to Baseline design tokens via Sass overrides. Custom ViewComponents (`Baseline::Ui::*`) wrap Bootstrap primitives (`.table`, `.btn-group`, `.badge`, `.card`, `.accordion`, Popper tooltips) and add the bits Bootstrap lacks (RatingsGrid, ScoreGrid, info-dot tooltip, ParticipantCard, AdminMasthead).
+- Bootstrap themed to Baseline design tokens via Sass overrides. Custom ViewComponents (`Baseline::Ui::*`) wrap Bootstrap primitives (`.table`, `.btn-group`, `.badge`, `.card`, `.accordion`, Popper tooltips) and add the bits Bootstrap lacks (RatingsGrid, ScoreGrid, info-dot tooltip, ParticipantCard, AdminMasthead).
 
 **Explicitly not in v0:**
 - Competitions, Stages, TeamStageEntries, TeamMatches (v2).
@@ -266,7 +266,7 @@ Screenshot OCR + deterministic TennisLink parsers, Competition/Stage/TeamMatch m
 
 Rough week-by-week for weekend/evening pace. Absolute durations vary; ordering is the thing.
 
-1. **Week 1** — Repo init: fresh Optimus clone → `baseline` (Bootstrap stack preserved from Optimus). Theme Bootstrap via Sass: design tokens (cool neutral palette, rust accent, 3px radius), IBM Plex Sans + Mono via Google Fonts. Devise + Optimus `system_permissions` wiring. Smoke test: `bin/setup`, `bin/rails s`, sign in, admin renders cleanly with Baseline theming.
+1. **Week 1** — Repo init: import a fresh Rails 8.1 template (Bootstrap stack, Devise + Pundit + `system_permissions`, GoodJob, ViewComponent, RSpec/Capybara/FactoryBot). Theme Bootstrap via Sass: design tokens (cool neutral palette, rust accent, 3px radius), IBM Plex Sans + Mono via Google Fonts. Devise + `system_permissions` wiring. Smoke test: `bin/setup`, `bin/rails s`, sign in, admin renders cleanly with Baseline theming.
 2. **Week 2** — Schema: port CourtView tables (modified), add new tables, write migrations. Seed a few players and grades by hand to test. Base ActiveRecord models, validations, factories.
 3. **Week 3** — Data migration task: write `MaintenanceTasks::MigrateFromCourtview` against a CourtView DB copy. Iterate until clean.
 4. **Week 4** — Admin: Players CRUD, Grades CRUD, merge flow, aliases, needs-disambiguation queue. Pundit policies per resource.
@@ -279,7 +279,7 @@ v0 shippable at week 8. Adjust pace to calendar.
 
 ## 10. Testing Posture
 
-Optimus ships RSpec, Capybara, FactoryBot, shoulda-matchers, timecop, VCR, WebMock. For v0 at hobby pace:
+The stack ships RSpec, Capybara, FactoryBot, shoulda-matchers, timecop, VCR, WebMock. For v0 at hobby pace:
 
 - **Model specs** — validations, key scopes, resolution algorithm, H2H cache refresh logic. Must-have.
 - **Policy specs** — one per Pundit policy. Cheap and critical for a role-locked app.
