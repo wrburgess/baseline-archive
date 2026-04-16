@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Burgess vs Halverson — H2H · Baseline</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eef1f4;
+    --bg-2:#e6eaef;
+    --surface:#ffffff;
+    --surface-2:#f7f9fb;
+    --surface-3:#eef2f6;
+    --ink:#0f1419;
+    --ink-2:#3b4350;
+    --ink-3:#626b77;
+    --ink-4:#94a0ae;
+    --line:#d9dde3;
+    --line-2:#e7eaef;
+    --rust:#a84c2a;
+    --rust-2:#85391e;
+    --rust-wash:#f4e0d4;
+    --win:#a84c2a;
+    --loss:#94a0ae;
+    --focus:#1e3a8a;
+  }
+  html,body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-feature-settings:"ss01","cv11";}
+  .font-mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;}
+  .tabular{font-variant-numeric:tabular-nums;}
+  .smallcaps{text-transform:uppercase;letter-spacing:.14em;font-weight:500;font-size:11px;}
+  .rule{height:1px;background:var(--line);}
+  .hair-b{border-bottom:1px solid var(--line);}
+  .hair-t{border-top:1px solid var(--line);}
+  .hair-r{border-right:1px solid var(--line);}
+  .hair-l{border-left:1px solid var(--line);}
+  .card{background:var(--surface);border:1px solid var(--line);}
+  .btn{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);padding:6px 10px;font-size:12px;letter-spacing:.01em;font-weight:500;}
+  .btn:hover{border-color:var(--ink-3);color:var(--ink);}
+  .btn-primary{background:var(--ink);color:var(--surface);border-color:var(--ink);}
+  .btn-primary:hover{background:#000;border-color:#000;color:var(--surface);}
+  .kbd{font-family:"IBM Plex Mono",monospace;font-size:11px;border:1px solid var(--line);background:var(--surface-2);padding:1px 5px;color:var(--ink-3);}
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border:1px solid var(--line);border-radius:3px;font-size:11px;color:var(--ink-2);background:var(--surface-2);font-weight:500;}
+  .pill-rust{border-color:var(--rust);color:var(--rust);background:var(--rust-wash);}
+  .pill-plain{background:transparent;border-color:var(--line-2);}
+  .idlink{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-2);letter-spacing:.02em;display:inline-flex;align-items:center;gap:6px;padding:3px 8px;background:var(--surface-2);border:1px solid var(--line);}
+  .idlink:hover{border-color:var(--ink-3);color:var(--ink);background:var(--surface);}
+  .idlink .k{color:var(--ink-3);font-weight:500;}
+  .idlink .arrow{opacity:0;transition:opacity .12s;color:var(--ink-3);}
+  .idlink:hover .arrow{opacity:1;}
+  .win-letter{color:var(--win);font-weight:700;}
+  .loss-letter{color:var(--loss);font-weight:500;}
+  table.data{width:100%;border-collapse:separate;border-spacing:0;}
+  table.data thead th{position:sticky;top:0;background:var(--surface-3);z-index:1;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600;padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);}
+  table.data tbody td{padding:10px 14px;font-size:13px;border-bottom:1px solid var(--line-2);vertical-align:middle;color:var(--ink-2);}
+  table.data tbody tr:last-child td{border-bottom:none;}
+  table.data tbody tr:hover td{background:var(--surface-2);}
+  table.data tbody tr.totrow td{background:var(--surface-3);font-weight:600;color:var(--ink);}
+  table.data .num{text-align:right;font-variant-numeric:tabular-nums;}
+  table.data .mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:12.5px;letter-spacing:.01em;color:var(--ink);}
+  table.data .nowrap{white-space:nowrap;}
+  .page{max-width:1280px;margin:0 auto;padding:0 28px;}
+  .section-h{display:flex;align-items:baseline;gap:12px;padding:26px 0 10px;}
+  .section-h h2{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600;}
+  .section-h .sub{font-size:11.5px;color:var(--ink-3);margin-left:auto;display:flex;align-items:center;gap:10px;}
+  .section-h .sub b{color:var(--ink-2);font-weight:500;}
+  .subtle-link{color:var(--ink-2);font-weight:500;}
+  .subtle-link:hover{color:var(--rust);}
+  .linklike{color:var(--rust);font-weight:500;}
+  .linklike:hover{text-decoration:underline;text-underline-offset:3px;}
+  .format-chip{display:inline-flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;border:1px solid var(--line);padding:1px 5px;color:var(--ink-2);min-width:18px;font-weight:600;background:var(--surface-2);}
+  .format-chip.d{background:var(--ink);color:var(--surface);border-color:var(--ink);}
+  .score-set{display:inline-block;padding:0 2px;}
+  .seg{display:inline-flex;border:1px solid var(--line);background:var(--surface);}
+  .seg button{padding:6px 12px;font-size:12px;color:var(--ink-2);letter-spacing:.01em;font-weight:500;background:var(--surface);}
+  .seg button.active{background:var(--ink);color:var(--surface);}
+  .seg button + button{border-left:1px solid var(--line);}
+  .seg button.active + button{border-left-color:var(--ink);}
+  .seg button:hover:not(.active){color:var(--ink);}
+  .rec-bar{position:relative;height:10px;background:var(--surface-2);border:1px solid var(--line);}
+  .rec-bar > .a{position:absolute;left:0;top:0;bottom:0;background:var(--rust-2);}
+  .rec-bar > .b{position:absolute;right:0;top:0;bottom:0;background:var(--ink-3);}
+  .vs-divider{font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-4);}
+  .stack-num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:60px;letter-spacing:-.015em;line-height:1;}
+  .nugget{display:flex;flex-direction:column;gap:6px;}
+  .nugget .label{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600;}
+  .nugget .val{font-family:"IBM Plex Mono",monospace;font-size:22px;letter-spacing:-.005em;color:var(--ink);}
+  .note-card{background:var(--surface);border:1px solid var(--line);}
+  .note-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--surface-3);border-bottom:1px solid var(--line);}
+  .note-meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);letter-spacing:.04em;}
+  .note-body{padding:20px 22px;font-size:14px;line-height:1.65;color:var(--ink-2);}
+  .note-body h4{font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin:18px 0 6px;}
+  .note-body h4:first-child{margin-top:0;}
+  .note-body ul{padding-left:18px;margin:6px 0 10px;}
+  .note-body li{list-style:disc;margin:2px 0;}
+  .note-body code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--surface-2);padding:1px 5px;border:1px solid var(--line);}
+  .note-body strong{color:var(--ink);font-weight:600;}
+  .mk-rust{background:var(--rust-wash);padding:0 3px;border-bottom:1px solid var(--rust);}
+
+  /* Info tooltip dot */
+  .info-dot{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:13px;height:13px;border-radius:999px;
+    border:1px solid var(--ink-4);background:var(--surface);
+    color:var(--ink-3);font-size:9px;font-weight:700;
+    position:relative;cursor:help;
+    font-family:"IBM Plex Sans",sans-serif;line-height:1;
+  }
+  .info-dot:hover{border-color:var(--ink-2);color:var(--ink);}
+  .info-dot .tt{
+    display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+    background:var(--ink);color:var(--surface);
+    padding:8px 12px;font-size:11px;line-height:1.4;white-space:nowrap;
+    z-index:20;box-shadow:0 2px 10px rgba(15,20,25,.18);
+    font-family:"IBM Plex Mono",monospace;letter-spacing:.02em;font-weight:400;
+  }
+  .info-dot:hover .tt,.info-dot:focus .tt{display:block;}
+  .info-dot .tt::after{
+    content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    border:5px solid transparent;border-top-color:var(--ink);
+  }
+  .info-dot .tt b{color:var(--surface);font-weight:600;}
+  .info-dot .tt .lbl{color:var(--ink-4);padding-right:4px;font-weight:500;}
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1024px){
+    .page{padding:0 20px;}
+    .h2h-name{font-size:34px !important;}
+    .stack-num{font-size:52px;}
+  }
+  @media (max-width: 860px){
+    html,body{min-width:0;}
+    .page{padding:0 16px;max-width:100%;}
+    /* Masthead */
+    header > .page{flex-wrap:wrap;gap:10px;padding-top:10px;padding-bottom:10px;}
+    header nav{display:none;}
+    header .kbd{display:none;}
+    header input[placeholder]{font-size:13px;}
+    header .flex.items-center.gap-4 > div.flex.items-center.gap-2[style*="border"]{min-width:0 !important;flex:1;}
+    /* H2H hero: stack A | vs | B vertically */
+    .h2h-hero{grid-template-columns:1fr !important;gap:24px !important;}
+    .h2h-hero .text-right{text-align:left !important;}
+    .h2h-hero .justify-end{justify-content:flex-start !important;}
+    .h2h-hero > .vs-col{flex-direction:row !important;min-width:0 !important;align-items:center !important;gap:12px;margin:0;}
+    .h2h-hero > .vs-col > .vs-line{width:40px !important;height:1px !important;background:var(--line);}
+    .h2h-hero > .vs-col .vs-divider{font-size:12px;}
+    .h2h-name{font-size:28px !important;}
+    /* Per-player 4-col rating grid stays but shrinks */
+    .grid.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr)) !important;}
+    .grid.grid-cols-4 > div{padding:10px !important;}
+    .grid.grid-cols-4 .font-mono[style*="font-size:20px"]{font-size:16px !important;}
+    /* Player B: unwind right-alignment on mobile */
+    .h2h-hero .mt-3.flex.flex-wrap.items-center.justify-end{justify-content:flex-start !important;}
+    /* Record bar 2-col grid to 1-col */
+    .record-grid{grid-template-columns:1fr !important;gap:24px !important;}
+    /* Aggregate record: keep big numbers side-by-side but scale down */
+    .stack-num{font-size:46px !important;}
+    /* Nugget grid 3-col to 1-col */
+    .grid.grid-cols-3{grid-template-columns:1fr !important;}
+    .grid.grid-cols-3 > .hair-r{border-right:none !important;border-bottom:1px solid var(--line);}
+    .grid.grid-cols-3 > .hair-r:last-child{border-bottom:none !important;}
+    .nugget .val{font-size:18px;}
+    /* Context strip 2-col to 1-col */
+    .grid.grid-cols-2{grid-template-columns:1fr !important;gap:0 !important;}
+    .grid.grid-cols-2 > .hair-r{border-right:none !important;border-bottom:1px solid var(--line);}
+    .grid.grid-cols-2 > .p-6.hair-r{padding:20px;}
+    /* Inner 2-col "then/now" grids: stay 2-col but tighten */
+    .p-6 .grid.grid-cols-2.gap-x-10{gap:16px 24px !important;}
+    /* Section headers wrap */
+    .section-h{flex-wrap:wrap;gap:8px;padding:18px 0 8px;}
+    .section-h .sub{margin-left:0;width:100%;font-size:11px;}
+    /* Data tables scroll */
+    .card{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    table.data{min-width:780px;}
+    /* Format toggle row with record section */
+    .flex.items-baseline.justify-between.mb-4{flex-wrap:wrap;gap:10px;}
+    /* Breadcrumb + action buttons */
+    .page .pt-5.pb-2 .flex.items-center.gap-2 .btn{font-size:11px;padding:5px 8px;}
+    /* Note card */
+    .note-head{flex-wrap:wrap;gap:8px;}
+    .note-head .flex.items-center.gap-4{flex-wrap:wrap;gap:8px;width:100%;}
+    .note-head .note-meta{font-size:10px;}
+    .note-body{padding:16px 16px;font-size:13.5px;}
+    .note-body h4{font-size:13px;}
+    /* Footer wraps */
+    footer.page{flex-wrap:wrap;gap:12px;}
+  }
+  @media (max-width: 480px){
+    .h2h-name{font-size:24px !important;}
+    .grid.grid-cols-4{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+    .grid.grid-cols-4 > div{border-right:none !important;border-bottom:1px solid var(--line);}
+    .grid.grid-cols-4 > div:nth-child(2n){border-right:none !important;}
+    .grid.grid-cols-4 > div:nth-last-child(-n+2){border-bottom:none;}
+    .stack-num{font-size:38px !important;}
+    .page{padding:0 12px;}
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- TOP NAV -->
+<header class="hair-b" style="background:var(--surface)">
+  <div class="page flex items-center justify-between py-3.5">
+    <div class="flex items-center gap-10">
+      <a href="#" class="font-mono" style="font-size:16px;font-weight:600;letter-spacing:-.01em;color:var(--ink)">Baseline</a>
+      <nav class="flex items-center gap-6 text-sm" style="color:var(--ink-2)">
+        <a class="hover:text-[var(--ink)]" href="#">Players</a>
+        <a class="hover:text-[var(--ink)]" href="#">Matches</a>
+        <a class="hover:text-[var(--ink)]" href="#" style="color:var(--ink)">Head&#8209;to&#8209;Head</a>
+        <a class="hover:text-[var(--ink)]" href="#">Teams</a>
+        <a class="hover:text-[var(--ink)]" href="#" style="color:var(--ink-4)">Admin</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2 px-3 py-1.5" style="border:1px solid var(--line);background:var(--bg);min-width:320px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--ink-3)"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input placeholder="Search players, teams, matches…" class="flex-1 bg-transparent text-sm outline-none" style="color:var(--ink)"/>
+        <span class="kbd">/</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="smallcaps" style="color:var(--ink-3)">R. Burgess</span>
+        <div style="width:26px;height:26px;border-radius:999px;background:var(--ink);color:var(--surface);display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.02em;font-weight:600;">RB</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="page pt-5 pb-2 flex items-center justify-between">
+  <div class="text-xs flex items-center gap-2" style="color:var(--ink-3)">
+    <a class="subtle-link" href="#">Head-to-Head</a>
+    <span style="color:var(--ink-4)">/</span>
+    <span style="color:var(--ink-2)">Burgess — Halverson</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <button class="btn">Swap sides</button>
+    <button class="btn">Copy link</button>
+    <button class="btn">Print scouting card</button>
+  </div>
+</div>
+
+<!-- H2H HEADER: two players + vs -->
+<div class="page pt-6 pb-10">
+  <div class="h2h-hero grid items-center" style="grid-template-columns: 1fr auto 1fr; gap:32px">
+    <!-- Player A -->
+    <div>
+      <div class="smallcaps mb-1" style="color:var(--ink-3)">Plaza Tennis Center</div>
+      <a href="#" class="h2h-name block" style="font-size:40px;line-height:1.04;letter-spacing:-.022em;font-weight:600;color:var(--ink)">
+        Robert A. Burgess
+      </a>
+      <div class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm" style="color:var(--ink-2)">
+        <span>Male · 52 · Right-handed</span>
+      </div>
+      <div class="mt-3 grid grid-cols-4 gap-0" style="border:1px solid var(--line);background:var(--surface);">
+        <div class="p-3 hair-r">
+          <div class="smallcaps" style="color:var(--ink-3)">
+            NTRP
+            <span class="info-dot" tabindex="0" style="vertical-align:1px;margin-left:2px">i
+              <span class="tt">
+                <span class="lbl">recorded</span><b>2026-01-14</b><br/>
+                <span class="lbl">source</span><b>manual</b><br/>
+                <span class="lbl">rationale</span><b>year-end computer</b>
+              </span>
+            </span>
+          </div>
+          <div class="font-mono" style="font-size:20px;letter-spacing:-.01em">4.0<span style="color:var(--rust);font-size:12px;padding-left:2px;font-weight:600">C</span></div>
+        </div>
+        <div class="p-3 hair-r">
+          <div class="smallcaps" style="color:var(--ink-3)">
+            USTA dyn
+            <span class="info-dot" tabindex="0" style="vertical-align:1px;margin-left:2px">i
+              <span class="tt">
+                <span class="lbl">recorded</span><b>2026-04-10</b><br/>
+                <span class="lbl">source</span><b>estimate</b>
+              </span>
+            </span>
+          </div>
+          <div class="font-mono" style="font-size:20px;letter-spacing:-.01em">3.87</div>
+        </div>
+        <div class="p-3 hair-r">
+          <div class="smallcaps" style="color:var(--ink-3)">
+            WTN
+            <span class="info-dot" tabindex="0" style="vertical-align:1px;margin-left:2px">i
+              <span class="tt">
+                <span class="lbl">recorded</span><b>2026-03-29</b><br/>
+                <span class="lbl">source</span><b>manual</b>
+              </span>
+            </span>
+          </div>
+          <div class="font-mono" style="font-size:20px;letter-spacing:-.01em">19.2</div>
+        </div>
+        <div class="p-3">
+          <div class="smallcaps" style="color:var(--ink-3)">
+            TR
+            <span class="info-dot" tabindex="0" style="vertical-align:1px;margin-left:2px">i
+              <span class="tt">
+                <span class="lbl">recorded</span><b>2025-05-18</b><br/>
+                <span class="lbl">source</span><b>manual</b>
+              </span>
+            </span>
+          </div>
+          <div class="font-mono" style="font-size:20px;letter-spacing:-.01em">4.02</div>
+        </div>
+      </div>
+      <div class="mt-2 flex flex-wrap gap-2">
+        <a class="idlink" href="#" target="_blank" rel="noopener">
+          <span class="k">USTA</span> <b style="font-weight:500">2008245519</b>
+          <svg class="arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <a class="idlink" href="#" target="_blank" rel="noopener">
+          <span class="k">WTN</span> <b style="font-weight:500">USA-4418302</b>
+          <svg class="arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- VS column -->
+    <div class="vs-col flex flex-col items-center justify-center" style="min-width:110px">
+      <div class="vs-line" style="width:1px;height:52px;background:var(--line)"></div>
+      <span class="vs-divider my-2">vs</span>
+      <div class="vs-line" style="width:1px;height:52px;background:var(--line)"></div>
+    </div>
+
+    <!-- Player B -->
+    <div class="text-right">
+      <div class="smallcaps mb-1" style="color:var(--ink-3)">Overland Park Racquet Club</div>
+      <a href="#" class="h2h-name block" style="font-size:40px;line-height:1.04;letter-spacing:-.022em;font-weight:600;color:var(--ink)">
+        Thomas Halverson
+      </a>
+      <div class="mt-3 flex flex-wrap items-center justify-end gap-x-5 gap-y-1 text-sm" style="color:var(--ink-2)">
+        <span>Male · 55 · Left-handed · One-handed BH</span>
+      </div>
+      <div class="mt-3 grid grid-cols-4 gap-0" style="border:1px solid var(--line);background:var(--surface);">
+        <div class="p-3 hair-r text-left">
+          <div class="smallcaps" style="color:var(--ink-3)">
+            NTRP
+            <span class="info-dot" tabindex="0" style="vertical-align:1px;margin-left:2px">i
+              <span class="tt">
+                <span class="lbl">recorded</span><b>2025-08-12</b><br/>
+                <span class="lbl">source</span><b>manual</b><br/>
+                <span class="lbl">rationale</span><b>appeal granted</b>
+              </span>
+            </span>
+          </div>
+          <div class="font-mono" style="font-size:20px;letter-spacing:-.01em">4.5<span style="color:var(--rust);font-size:12px;padding-left:2px;font-weight:600">A</span></div>
+        </div>
+        <div class="p-3 hair-r text-left">
+          <div class="smallcaps" style="color:var(--ink-3)">
+            USTA dyn
+            <span class="info-dot" tabindex="0" style="vertical-align:1px;margin-left:2px">i
+              <span class="tt">
+                <span class="lbl">recorded</span><b>2026-04-08</b><br/>
+                <span class="lbl">source</span><b>estimate</b>
+              </span>
+            </span>
+          </div>
+          <div class="font-mono" style="font-size:20px;letter-spacing:-.01em">4.31</div>
+        </div>
+        <div class="p-3 hair-r text-left">
+          <div class="smallcaps" style="color:var(--ink-3)">
+            WTN
+            <span class="info-dot" tabindex="0" style="vertical-align:1px;margin-left:2px">i
+              <span class="tt">
+                <span class="lbl">recorded</span><b>2026-03-15</b><br/>
+                <span class="lbl">source</span><b>manual</b>
+              </span>
+            </span>
+          </div>
+          <div class="font-mono" style="font-size:20px;letter-spacing:-.01em">15.6</div>
+        </div>
+        <div class="p-3 text-left">
+          <div class="smallcaps" style="color:var(--ink-3)">
+            TR
+            <span class="info-dot" tabindex="0" style="vertical-align:1px;margin-left:2px">i
+              <span class="tt">
+                <span class="lbl">recorded</span><b>2026-02-20</b><br/>
+                <span class="lbl">source</span><b>manual</b>
+              </span>
+            </span>
+          </div>
+          <div class="font-mono" style="font-size:20px;letter-spacing:-.01em">4.44</div>
+        </div>
+      </div>
+      <div class="mt-2 flex flex-wrap justify-end gap-2">
+        <a class="idlink" href="#" target="_blank" rel="noopener">
+          <span class="k">USTA</span> <b style="font-weight:500">2003917284</b>
+          <svg class="arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <a class="idlink" href="#" target="_blank" rel="noopener">
+          <span class="k">WTN</span> <b style="font-weight:500">USA-2207815</b>
+          <svg class="arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- RECORD + FORMAT TOGGLE -->
+<div class="page pt-8 pb-4">
+  <div class="record-grid grid" style="grid-template-columns: 1fr 1fr; gap:48px; align-items:center">
+    <div>
+      <div class="flex items-baseline justify-between mb-4">
+        <div class="section-h" style="padding:0">
+          <h2>All-time record</h2>
+        </div>
+        <div class="seg">
+          <button class="active">All 11</button>
+          <button>Singles 4</button>
+          <button>Doubles 7</button>
+        </div>
+      </div>
+      <div class="flex items-end justify-between" style="gap:12px">
+        <div class="flex-1">
+          <div class="smallcaps mb-1" style="color:var(--rust)">Burgess</div>
+          <div class="stack-num">5</div>
+        </div>
+        <div class="font-mono" style="font-size:18px;color:var(--ink-4);font-weight:500;letter-spacing:-.01em">—</div>
+        <div class="flex-1 text-right">
+          <div class="smallcaps mb-1" style="color:var(--ink-2)">Halverson</div>
+          <div class="stack-num">6</div>
+        </div>
+      </div>
+      <div class="rec-bar mt-5">
+        <div class="a" style="width:45.45%"></div>
+        <div class="b" style="width:54.55%"></div>
+      </div>
+      <div class="flex items-center justify-between mt-3 text-xs" style="color:var(--ink-3)">
+        <span>Halverson leads 6–5 · since Apr 2022</span>
+        <span class="font-mono">45.5% · 54.5%</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3" style="border:1px solid var(--line);background:var(--surface);">
+      <div class="p-5 hair-r nugget">
+        <span class="label">First meeting</span>
+        <span class="val">2022-05-07</span>
+        <span class="text-xs" style="color:var(--ink-3)">Plaza Spring Open · R16</span>
+      </div>
+      <div class="p-5 hair-r nugget">
+        <span class="label">Most recent</span>
+        <span class="val">2026-04-02</span>
+        <span class="text-xs" style="color:var(--ink-3)">12 days ago · Adult 40+ Wk 3</span>
+      </div>
+      <div class="p-5 nugget">
+        <span class="label">Super-TB split</span>
+        <span class="val">1 <span style="color:var(--ink-4)">—</span> 3</span>
+        <span class="text-xs" style="color:var(--ink-3)">When it went to a match tiebreak</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rule mt-10"></div>
+
+<!-- CONTEXT STRIP: rating deltas -->
+<div class="page">
+  <div class="section-h">
+    <h2>Context, then → now</h2>
+    <div class="sub">Ratings at first meeting vs current</div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-0" style="border:1px solid var(--line);background:var(--surface)">
+    <div class="p-6 hair-r">
+      <div class="smallcaps mb-4" style="color:var(--rust)">Burgess</div>
+      <div class="grid grid-cols-2 gap-x-10 gap-y-3 text-sm">
+        <div>
+          <div class="smallcaps" style="color:var(--ink-3)">NTRP 2022-05</div>
+          <div class="font-mono" style="font-size:17px">3.5<span style="color:var(--rust);font-size:11px;font-weight:600">S</span></div>
+        </div>
+        <div>
+          <div class="smallcaps" style="color:var(--ink-3)">NTRP 2026-04</div>
+          <div class="font-mono" style="font-size:17px">4.0<span style="color:var(--rust);font-size:11px;font-weight:600">C</span> <span style="color:var(--rust);font-size:12px">&#9650; 0.5</span></div>
+        </div>
+        <div>
+          <div class="smallcaps" style="color:var(--ink-3)">WTN 2022-05</div>
+          <div class="font-mono" style="font-size:17px">23.1</div>
+        </div>
+        <div>
+          <div class="smallcaps" style="color:var(--ink-3)">WTN 2026-04</div>
+          <div class="font-mono" style="font-size:17px">19.2 <span style="color:var(--rust);font-size:12px">&#9660; 3.9</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="p-6">
+      <div class="smallcaps mb-4" style="color:var(--ink-2)">Halverson</div>
+      <div class="grid grid-cols-2 gap-x-10 gap-y-3 text-sm">
+        <div>
+          <div class="smallcaps" style="color:var(--ink-3)">NTRP 2022-05</div>
+          <div class="font-mono" style="font-size:17px">4.0<span style="color:var(--rust);font-size:11px;font-weight:600">C</span></div>
+        </div>
+        <div>
+          <div class="smallcaps" style="color:var(--ink-3)">NTRP 2026-04</div>
+          <div class="font-mono" style="font-size:17px">4.5<span style="color:var(--rust);font-size:11px;font-weight:600">A</span> <span style="color:var(--rust);font-size:12px">&#9650; 0.5</span></div>
+        </div>
+        <div>
+          <div class="smallcaps" style="color:var(--ink-3)">WTN 2022-05</div>
+          <div class="font-mono" style="font-size:17px">18.9</div>
+        </div>
+        <div>
+          <div class="smallcaps" style="color:var(--ink-3)">WTN 2026-04</div>
+          <div class="font-mono" style="font-size:17px">15.6 <span style="color:var(--rust);font-size:12px">&#9660; 3.3</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-3 text-xs" style="color:var(--ink-3)">
+    Halverson appealed mid-2025; appeal granted to remain at 4.5A. Both players bumped 0.5 NTRP in the 2022→2025 window.
+  </div>
+</div>
+
+<div class="rule mt-10"></div>
+
+<!-- MATCH LIST -->
+<div class="page">
+  <div class="section-h">
+    <h2>All matches between the pair</h2>
+    <div class="sub"><b>11 matches</b> · 2022–2026</div>
+  </div>
+
+  <div class="card">
+    <table class="data">
+      <thead>
+        <tr>
+          <th style="width:110px">Date</th>
+          <th style="width:40px">F</th>
+          <th>Event</th>
+          <th>Burgess side</th>
+          <th>Halverson side</th>
+          <th class="num" style="width:180px">Score</th>
+          <th style="width:80px">Winner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono">2026-04-02</td>
+          <td><span class="format-chip d">D</span></td>
+          <td style="color:var(--ink-2)">USTA Adult 40+ 4.0 · Wk 3</td>
+          <td>Burgess / <a class="subtle-link" href="#">J. Carson</a></td>
+          <td>Halverson / <a class="subtle-link" href="#">R. Huberman</a></td>
+          <td class="num mono">4&#8209;6 · 6&#8209;7<sup style="color:var(--ink-3)">(4)</sup></td>
+          <td><span class="pill" style="color:var(--ink-2)">Halverson</span></td>
+        </tr>
+        <tr>
+          <td class="mono">2025-11-16</td>
+          <td><span class="format-chip d">D</span></td>
+          <td style="color:var(--ink-2)">USTA Tri-Level 7.5 · Districts SF</td>
+          <td>Burgess / <a class="subtle-link" href="#">S. Linderman</a></td>
+          <td>Halverson / <a class="subtle-link" href="#">R. Huberman</a></td>
+          <td class="num mono">4&#8209;6 · 6&#8209;3 · 10&#8209;5</td>
+          <td><span class="pill pill-rust">Burgess</span></td>
+        </tr>
+        <tr>
+          <td class="mono">2025-10-18</td>
+          <td><span class="format-chip">S</span></td>
+          <td style="color:var(--ink-2)">Fall Singles Ladder · Wk 10</td>
+          <td>Burgess</td>
+          <td>Halverson</td>
+          <td class="num mono">6&#8209;4 · 3&#8209;6 · 7&#8209;10</td>
+          <td><span class="pill" style="color:var(--ink-2)">Halverson</span></td>
+        </tr>
+        <tr>
+          <td class="mono">2025-07-12</td>
+          <td><span class="format-chip d">D</span></td>
+          <td style="color:var(--ink-2)">USTA Adult 40+ 4.0 · Wk 6</td>
+          <td>Burgess / <a class="subtle-link" href="#">J. Carson</a></td>
+          <td>Halverson / <a class="subtle-link" href="#">W. Ainsworth</a></td>
+          <td class="num mono">7&#8209;5 · 4&#8209;6 · 10&#8209;8</td>
+          <td><span class="pill pill-rust">Burgess</span></td>
+        </tr>
+        <tr>
+          <td class="mono">2025-05-04</td>
+          <td><span class="format-chip">S</span></td>
+          <td style="color:var(--ink-2)">Plaza Spring Open · QF</td>
+          <td>Burgess</td>
+          <td>Halverson</td>
+          <td class="num mono">2&#8209;6 · 6&#8209;4 · 10&#8209;7</td>
+          <td><span class="pill pill-rust">Burgess</span></td>
+        </tr>
+        <tr>
+          <td class="mono">2024-09-14</td>
+          <td><span class="format-chip d">D</span></td>
+          <td style="color:var(--ink-2)">Kansas City Open · SF</td>
+          <td>Burgess / <a class="subtle-link" href="#">M. Baird</a></td>
+          <td>Halverson / <a class="subtle-link" href="#">R. Huberman</a></td>
+          <td class="num mono">3&#8209;6 · 6&#8209;4 · 5&#8209;10</td>
+          <td><span class="pill" style="color:var(--ink-2)">Halverson</span></td>
+        </tr>
+        <tr>
+          <td class="mono">2024-06-08</td>
+          <td><span class="format-chip d">D</span></td>
+          <td style="color:var(--ink-2)">USTA 40+ 4.0 · Wk 4</td>
+          <td>Burgess / <a class="subtle-link" href="#">P. Delaney</a></td>
+          <td>Halverson / <a class="subtle-link" href="#">S. Kwon</a></td>
+          <td class="num mono">6&#8209;3 · 7&#8209;5</td>
+          <td><span class="pill pill-rust">Burgess</span></td>
+        </tr>
+        <tr>
+          <td class="mono">2024-03-23</td>
+          <td><span class="format-chip">S</span></td>
+          <td style="color:var(--ink-2)">Winter Ladder · F</td>
+          <td>Burgess</td>
+          <td>Halverson</td>
+          <td class="num mono">4&#8209;6 · 6&#8209;7<sup style="color:var(--ink-3)">(3)</sup></td>
+          <td><span class="pill" style="color:var(--ink-2)">Halverson</span></td>
+        </tr>
+        <tr>
+          <td class="mono">2023-08-19</td>
+          <td><span class="format-chip d">D</span></td>
+          <td style="color:var(--ink-2)">USTA 40+ 4.0 · Playoffs SF</td>
+          <td>Burgess / <a class="subtle-link" href="#">J. Carson</a></td>
+          <td>Halverson / <a class="subtle-link" href="#">W. Ainsworth</a></td>
+          <td class="num mono">2&#8209;6 · 4&#8209;6</td>
+          <td><span class="pill" style="color:var(--ink-2)">Halverson</span></td>
+        </tr>
+        <tr>
+          <td class="mono">2023-04-15</td>
+          <td><span class="format-chip d">D</span></td>
+          <td style="color:var(--ink-2)">USTA 40+ 4.0 · Wk 1</td>
+          <td>Burgess / <a class="subtle-link" href="#">M. Baird</a></td>
+          <td>Halverson / <a class="subtle-link" href="#">R. Huberman</a></td>
+          <td class="num mono">7&#8209;6<sup style="color:var(--ink-3)">(5)</sup> · 6&#8209;2</td>
+          <td><span class="pill pill-rust">Burgess</span></td>
+        </tr>
+        <tr>
+          <td class="mono">2022-05-07</td>
+          <td><span class="format-chip">S</span></td>
+          <td style="color:var(--ink-2)">Plaza Spring Open · R16</td>
+          <td>Burgess</td>
+          <td>Halverson</td>
+          <td class="num mono">3&#8209;6 · 2&#8209;6</td>
+          <td><span class="pill" style="color:var(--ink-2)">Halverson</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="rule mt-10"></div>
+
+<!-- SHARED PARTNERS -->
+<div class="page">
+  <div class="section-h">
+    <h2>Shared partners</h2>
+    <div class="sub">Doubles only · players who've partnered with both</div>
+  </div>
+
+  <div class="card">
+    <table class="data">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th class="num">With Burgess</th>
+          <th class="num">With Halverson</th>
+          <th class="num">Last seen</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a class="subtle-link" href="#">Raymond Huberman</a></td>
+          <td class="num mono">0 matches</td>
+          <td class="num mono">28 matches · 19–9</td>
+          <td class="num mono" style="color:var(--ink-3)">2026-04-02</td>
+          <td class="num"><a class="linklike" href="#">H2H →</a></td>
+        </tr>
+        <tr>
+          <td><a class="subtle-link" href="#">William P. Ainsworth</a></td>
+          <td class="num mono">1 match · 0–1</td>
+          <td class="num mono">14 matches · 10–4</td>
+          <td class="num mono" style="color:var(--ink-3)">2025-07-12</td>
+          <td class="num"><a class="linklike" href="#">H2H →</a></td>
+        </tr>
+        <tr>
+          <td><a class="subtle-link" href="#">Steven Kwon</a></td>
+          <td class="num mono">2 matches · 1–1</td>
+          <td class="num mono">9 matches · 6–3</td>
+          <td class="num mono" style="color:var(--ink-3)">2024-06-08</td>
+          <td class="num"><a class="linklike" href="#">H2H →</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="rule mt-10"></div>
+
+<!-- SCOUTING NOTES -->
+<div class="page pb-12">
+  <div class="section-h">
+    <h2>Pair notes</h2>
+    <div class="sub">Captain-private · edits versioned</div>
+  </div>
+
+  <div class="note-card">
+    <div class="note-head">
+      <div class="flex items-center gap-3">
+        <span class="smallcaps" style="color:var(--ink-3)">Scouting log</span>
+        <span class="note-meta">Burgess ⇄ Halverson</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="note-meta">Last edited by <b style="color:var(--ink-2);font-weight:500">P. Delaney</b> · 2026-04-03 · 6 revisions</span>
+        <button class="btn">Edit</button>
+      </div>
+    </div>
+    <div class="note-body">
+      <h4>Serve &amp; return</h4>
+      <ul>
+        <li>Serves big and flat on the ad side; <strong>second serve is a kicker</strong> to the BH. Step in on the 2nd.</li>
+        <li>Left-handed — his deuce-side slice serve pulls righties off the court. Stand a step toward the doubles alley when returning.</li>
+        <li>Against Burgess singles: loses tempo when we hit deep returns down the middle. See <code>2025-05-04</code> QF — split-step return strategy worked after set 1.</li>
+      </ul>
+
+      <h4>Patterns — doubles</h4>
+      <ul>
+        <li>Pairs with <a class="subtle-link" href="#">R. Huberman</a> <strong>90% of the time</strong>. They run the <em>I-formation</em> on big points — poacher breaks before the serve lands. Lob early returns.</li>
+        <li><span class="mk-rust">Struggles with high balls to BH when at net</span>. M. Baird scored 3 easy points off this in <code>2024-09-14</code> SF. Worth seeding into every return game.</li>
+        <li>Crosscourt dink volleys from the ad side are his weakest — he floats them when moving forward.</li>
+      </ul>
+
+      <h4>Stamina / late-match</h4>
+      <ul>
+        <li><strong>Super-TB split: 1–3 against us.</strong> He fades after 90 minutes; his first-serve % drops noticeably. If we can push to a third, odds tilt our way.</li>
+        <li>Twice he has called a medical/time-out in a third set (<code>2025-10-18</code>, <code>2024-03-23</code>). Don't let him reset the rhythm — stay close to the chair between points.</li>
+      </ul>
+
+      <h4>Captain reminders</h4>
+      <ul>
+        <li>He <strong>appealed</strong> mid-2025 to stay at 4.5A; won the appeal. Expect aggressive line-calling — he knows his rating is being watched.</li>
+        <li>OPRC posts their Saturday lineups on TennisLink by Thursday 8pm. Check <code>LATNHPMC</code> the morning of.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-3 text-xs" style="color:var(--ink-3)">Notes are visible to captains only. Edits are logged in <a class="subtle-link" href="#">data_logs</a>.</div>
+</div>
+
+<!-- FOOTER -->
+<div class="page mt-16"></div>
+<div class="rule"></div>
+<footer class="page py-8 flex items-center justify-between text-xs" style="color:var(--ink-3)">
+  <div class="flex items-center gap-4">
+    <span class="font-mono" style="font-size:13px;color:var(--ink-2);font-weight:600">Baseline</span>
+    <span style="color:var(--line)">·</span>
+    <span>Private captain tool</span>
+  </div>
+  <div class="flex items-center gap-4">
+    <span class="font-mono">v0.1.0</span>
+    <span style="color:var(--line)">·</span>
+    <a class="subtle-link" href="#">Changelog</a>
+    <a class="subtle-link" href="#">Blazer</a>
+    <a class="subtle-link" href="#">Admin</a>
+  </div>
+</footer>
+
+</body>
+</html>
