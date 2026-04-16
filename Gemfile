@@ -24,7 +24,7 @@ gem "kamal", require: false
 gem "maintenance_tasks", "2.14.0"
 gem "pagy", "43.5.1"
 gem "pg", "1.6.3"
-gem "pghero", "3.7.0"
+gem "pghero", "3.8.0"
 gem "postmark-rails", "0.22.1"
 gem "propshaft", "1.3.1"
 gem "puma", "8.0.0"
