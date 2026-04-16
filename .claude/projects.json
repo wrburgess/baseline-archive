@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "baseline": {
+      "name": "Baseline",
+      "description": "Private tennis player profile and head-to-head analysis app for USTA league captains in Kansas City",
+      "github_url": "https://github.com/wrburgess/baseline",
+      "github_org": "wrburgess",
+      "github_repo": "baseline",
+      "role": "primary"
+    }
+  }
+}
