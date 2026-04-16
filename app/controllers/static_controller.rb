@@ -7,7 +7,5 @@ class StaticController < ApplicationController
   # the landing page, routes through Devise first.
   before_action :authenticate_user!
 
-  def index
-    redirect_to admin_root_path
-  end
+  def index; end
 end

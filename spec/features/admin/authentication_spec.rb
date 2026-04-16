@@ -11,7 +11,7 @@ RSpec.describe "Admin Authentication", type: :feature do
 
       fill_in "Email", with: user.email
       fill_in "Password", with: "Password123!"
-      click_button "Log in"
+      click_button "Sign in"
 
       expect(page).to have_current_path(root_path)
     end
@@ -21,7 +21,7 @@ RSpec.describe "Admin Authentication", type: :feature do
 
       fill_in "Email", with: user.email
       fill_in "Password", with: "wrongpassword"
-      click_button "Log in"
+      click_button "Sign in"
 
       expect(page).to have_content("Invalid email or password")
     end
