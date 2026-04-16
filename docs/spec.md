@@ -40,7 +40,7 @@ It is **not** a lineup optimizer, a prediction model, or a public tennis referen
 | External IDs | `players.ustaid`, `trid`, `utrid`, `wtnid` — all nullable, populated opportunistically |
 | Gender | Required at player create |
 | Birth year | Optional |
-| UI stack | Rails Designer (Tailwind) — not MPI's Bootstrap design system. Swapped at init |
+| UI stack | **Bootstrap** (already in Optimus). Themed via Sass `_variables.scss` to the Baseline design tokens (cool neutral palette, IBM Plex Sans + Mono, 3px radius, rust accent). Custom ViewComponents built on top of Bootstrap primitives. No Tailwind, no Rails Designer purchase. |
 | Starting point | Fresh Optimus template; port data from CourtView via one-time Maintenance Task |
 | Hosting | Local only. Postgres on the MacBook |
 
@@ -244,7 +244,7 @@ One-time `Maintenance Task` — `MaintenanceTasks::MigrateFromCourtview` — rea
 - Admin CRUD: Players, Matches, Grades, PlayerAliases, HeadToHeadNotes, merge flow, needs-disambiguation queue.
 - Public: global search, `/players/:id`, `/head_to_heads/:a_id/:b_id`.
 - H2H cache refresh on Match commit.
-- Rails Designer + Tailwind at init (no Bootstrap ever enters the repo).
+- Bootstrap (already wired in Optimus) themed to Baseline design tokens via Sass overrides. Custom ViewComponents (`Baseline::Ui::*`) wrap Bootstrap primitives (`.table`, `.btn-group`, `.badge`, `.card`, `.accordion`, Popper tooltips) and add the bits Bootstrap lacks (RatingsGrid, ScoreGrid, info-dot tooltip, ParticipantCard, AdminMasthead).
 
 **Explicitly not in v0:**
 - Competitions, Stages, TeamStageEntries, TeamMatches (v2).
@@ -266,7 +266,7 @@ Screenshot OCR + deterministic TennisLink parsers, Competition/Stage/TeamMatch m
 
 Rough week-by-week for weekend/evening pace. Absolute durations vary; ordering is the thing.
 
-1. **Week 1** — Repo init: fresh Optimus clone → `baseline`. Tailwind + Rails Designer swap at init. Devise + Optimus permissions wiring. Delete Bootstrap-referencing scaffolding. First commit is a clean `rails s` app.
+1. **Week 1** — Repo init: fresh Optimus clone → `baseline` (Bootstrap stack preserved from Optimus). Theme Bootstrap via Sass: design tokens (cool neutral palette, rust accent, 3px radius), IBM Plex Sans + Mono via Google Fonts. Devise + Optimus `system_permissions` wiring. Smoke test: `bin/setup`, `bin/rails s`, sign in, admin renders cleanly with Baseline theming.
 2. **Week 2** — Schema: port CourtView tables (modified), add new tables, write migrations. Seed a few players and grades by hand to test. Base ActiveRecord models, validations, factories.
 3. **Week 3** — Data migration task: write `MaintenanceTasks::MigrateFromCourtview` against a CourtView DB copy. Iterate until clean.
 4. **Week 4** — Admin: Players CRUD, Grades CRUD, merge flow, aliases, needs-disambiguation queue. Pundit policies per resource.
