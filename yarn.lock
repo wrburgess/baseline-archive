@@ -448,7 +448,7 @@ __metadata:
     bootstrap-icons: "npm:1.13.1"
     esbuild: "npm:0.28.0"
     sass: "npm:1.99.0"
-    tom-select: "npm:2.5.2"
+    tom-select: "npm:2.6.1"
   languageName: unknown
   linkType: soft
 
@@ -1142,13 +1142,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tom-select@npm:2.5.2":
-  version: 2.5.2
-  resolution: "tom-select@npm:2.5.2"
+"tom-select@npm:2.6.1":
+  version: 2.6.1
+  resolution: "tom-select@npm:2.6.1"
   dependencies:
     "@orchidjs/sifter": "npm:^1.1.0"
     "@orchidjs/unicode-variants": "npm:^1.1.2"
-  checksum: 10c0/4522747956fbbd585473e55359e7e763bcfa9b3e16963e2e61d49241132fc6bf30fdceaa75c083b88c6f718fbb84f3d3291b1cdcc9d62fd2d8b1553693e24977
+  checksum: 10c0/57df424e19b629072eaca6d03443bdce8ef9b4f660bef53cfe55a8ad36dbcf413656f84e666b36d134247c7214fad6b671dba35d5196403093e6320f9aa8babd
   languageName: node
   linkType: hard
 
